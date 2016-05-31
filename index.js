@@ -23,12 +23,12 @@ Eleme.prototype.sign = function(url, params) {
     const rawString = [
         url,
         '?',
-        Object.keys(params).sort().map(key => key + '=' + params[key]).join('&'),
+        Object.keys(params).sort().map(key => encodeURI(key) + '=' + encodeURI(params[key])).join('&'),
         this.consumer_secret
     ].join('');
     params.sig = crypto
-        .createHash('md5')
-        .update(rawString, 'utf8')
+        .createHash('sha1')
+        .update(new Buffer(encodeURI(rawString)).toString('hex'), 'ascii')
         .digest('hex')
         .toLowerCase();
     return params;

@@ -13,7 +13,7 @@ const HOST = 'http://v2.openapi.ele.me';
 const YOUR_APP_ID = 'yourappid';
 const YOUR_APP_SECRET = 'yourappsecret';
 
-describe('Eleme', function() {
+describe('Eleme open api', function() {
 
     describe('get resource from host', function() {
         it('should get expected response', function() {
